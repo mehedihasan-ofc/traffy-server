@@ -1,0 +1,32 @@
+[
+    {
+      "Title": "Search Engine Optimization (SEO)",
+      "Description": "Search Engine Optimization involves optimizing your website and content to improve its visibility in search engine results pages (SERPs).",
+      "Image": "https://i.ibb.co/9TfQd9v/digital-marketing.jpg",
+      "CreatedAt": "2024-04-02T00:00:00Z"
+    },
+    {
+      "Title": "Social Media Marketing (SMM)",
+      "Description": "Social Media Marketing involves leveraging social media platforms to connect with your audience, promote your brand, and drive traffic.",
+      "Image": "https://i.ibb.co/9TfQd9v/digital-marketing.jpg",
+      "CreatedAt": "2024-04-02T00:00:00Z"
+    },
+    {
+      "Title": "Influencer Marketing",
+      "Description": "Influencer Marketing involves collaborating with influential individuals to promote your products or services to their followers.",
+      "Image": "https://i.ibb.co/9TfQd9v/digital-marketing.jpg",
+      "CreatedAt": "2024-04-02T00:00:00Z"
+    },
+    {
+      "Title": "Content Marketing",
+      "Description": "Content Marketing focuses on creating and distributing valuable content to attract and retain a clearly defined audience.",
+      "Image": "https://i.ibb.co/9TfQd9v/digital-marketing.jpg",
+      "CreatedAt": "2024-04-02T00:00:00Z"
+    },
+    {
+      "Title": "Email Marketing",
+      "Description": "Email Marketing involves sending targeted emails to subscribers with the aim of nurturing leads and driving conversions.",
+      "Image": "https://i.ibb.co/9TfQd9v/digital-marketing.jpg",
+      "CreatedAt": "2024-04-02T00:00:00Z"
+    }
+  ]  
