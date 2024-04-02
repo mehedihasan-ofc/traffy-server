@@ -35,8 +35,39 @@ async function run() {
         });
 
         app.get('/services', async (req, res) => {
-            const result = await servicesCollection.find().toArray();
-            res.send(result);
+            try {
+                const services = await servicesCollection.find().toArray();
+                const categories = await categoriesCollection.find().toArray();
+
+                // Map category ids to category names for faster lookup
+                const categoryMap = {};
+                categories.forEach(category => {
+                    categoryMap[category._id.toString()] = category.title;
+                });
+
+                // Group services by category
+                const servicesByCategory = {};
+                services.forEach(service => {
+                    const categoryId = service.categoryId;
+                    const categoryName = categoryMap[categoryId];
+                    if (!servicesByCategory[categoryId]) {
+                        servicesByCategory[categoryId] = {
+                            id: categoryId,
+                            categoryName: categoryName,
+                            services: []
+                        };
+                    }
+                    servicesByCategory[categoryId].services.push(service);
+                });
+
+                // Convert servicesByCategory object to an array of objects
+                const result = Object.values(servicesByCategory);
+
+                res.send(result);
+            } catch (error) {
+                console.error("Error fetching services:", error);
+                res.status(500).send("Internal Server Error");
+            }
         });
 
         // Send a ping to confirm a successful connection
