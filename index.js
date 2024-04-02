@@ -28,6 +28,8 @@ async function run() {
 
         const categoriesCollection = client.db('traffyDB').collection('categories');
         const servicesCollection = client.db('traffyDB').collection('services');
+        const adsCollection = client.db('traffyDB').collection('ads');
+        const faqCollection = client.db('traffyDB').collection('faq');
 
         app.get('/categories', async (req, res) => {
             const result = await categoriesCollection.find().toArray();
@@ -68,6 +70,16 @@ async function run() {
                 console.error("Error fetching services:", error);
                 res.status(500).send("Internal Server Error");
             }
+        });
+
+        app.get('/ads', async (req, res) => {
+            const result = await adsCollection.find().toArray();
+            res.send(result);
+        });
+
+        app.get('/faq', async (req, res) => {
+            const result = await faqCollection.find().toArray();
+            res.send(result);
         });
 
         // Send a ping to confirm a successful connection
