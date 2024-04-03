@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 // =======================================================>
-const { MongoClient, ServerApiVersion } = require('mongodb');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.d9zindd.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
 
 // Create a MongoClient with a MongoClientOptions object to set the Stable API version
@@ -30,6 +30,7 @@ async function run() {
         const servicesCollection = client.db('traffyDB').collection('services');
         const adsCollection = client.db('traffyDB').collection('ads');
         const faqCollection = client.db('traffyDB').collection('faq');
+        const blogsCollection = client.db('traffyDB').collection('blogs');
 
         app.get('/categories', async (req, res) => {
             const result = await categoriesCollection.find().toArray();
@@ -79,6 +80,18 @@ async function run() {
 
         app.get('/faq', async (req, res) => {
             const result = await faqCollection.find().toArray();
+            res.send(result);
+        });
+
+        app.get('/blogs', async (req, res) => {
+            const result = await blogsCollection.find().toArray();
+            res.send(result);
+        });
+
+        app.get('/blogs/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = {_id: new ObjectId(id)}
+            const result = await blogsCollection.findOne(query);
             res.send(result);
         });
 
